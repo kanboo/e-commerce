@@ -12,7 +12,7 @@
 
 <body>
   <div id="app">
-    <div class="container mx-auto text-center">
+    <div class="container w-full max-w-md mx-auto">
       <div class="text-6xl text-center my-10">
         E-Commerce
       </div>
@@ -34,6 +34,14 @@
           </div>
         </li>
       </ul>
+
+      <div class="flex flex-col mb-10">
+        <label class="block">
+          <span class="text-gray-700">Buyer Name</span>
+          <input class="form-input mt-1 block w-full border border-gray-400 p-2 rounded" v-model="buyerName">
+        </label>
+      </div>
+
 
       <button class="w-48 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="handleCheckout">
         Checkout

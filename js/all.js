@@ -45,6 +45,8 @@ var app = new Vue({
   data: {
     merchantProduct: merchantProduct,
 
+    buyerName: '',
+
     handsupSessionToken: '',
     cartItems: {
       data: [],
@@ -121,8 +123,11 @@ var app = new Vue({
           }
         })
           .then((response) => {
-            console.log(response)
             this.cartItems = response.data
+
+            const info = JSON.parse(this.cartItems.info)
+
+            this.buyerName = info.buyer_name || ''
           })
           .catch((error) => {
             console.log(error);
@@ -134,7 +139,7 @@ var app = new Vue({
     calcPostBack() {
       const orderInfo = {
         "order_id": "ORDER-" + new Date().getTime(),
-        "buyer_name": "Kanboo",
+        "buyer_name": this.buyerName || 'No Name',
         "buyer_email": "Kanboo@test.com",
         "buyer_phone": "0912345678",
         "buyer_country_code": "JP",
